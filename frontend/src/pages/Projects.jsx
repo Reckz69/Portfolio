@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; // Added useState
 import { motion } from 'framer-motion';
-import { projects } from "../data/portfolio";
+import { projects } from "../data/Portfolio.js";
 import { ProjectDetailDrawer } from "../components/ProjectDetailDrawer"; // Ensure this path is correct
 
 export default function Projects() {
