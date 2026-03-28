@@ -1,0 +1,111 @@
+export const profile = {
+    name: "Narendra Santosh Meshram",
+    shortName: "Narendra",
+    title: "Full-Stack Developer",
+    subtitle: "B.E. — Artificial Intelligence & Data Science",
+    college: "Dr. D. Y. Patil Institute of Technology",
+    cgpa: "8.0 / 10",
+    year: "2023 – 2027",
+    email: "narendrameshram976@gmail.com",
+    phone: "+91-7058805097",
+    location: "Pimpri, Pune, Maharashtra",
+    dob: "23 Feb, 2003",
+    languages: ["English", "Marathi", "Hindi"],
+    summary: `Aspiring Full-Stack Developer with strong expertise in the MERN stack, RESTful API design, secure authentication (JWT), and scalable backend architecture. Experienced in building production-ready applications such as a video streaming platform, event management backend, and CLI-based utilities with a focus on security, performance, and clean MVC structure.`,
+    summary2: `Currently expanding my skill set by learning Machine Learning and exploring its real-world applications, with a long-term vision of building intelligent, data-driven systems.`,
+    socials: {
+      github: "https://github.com/Reckz69",
+      linkedin: "https://www.linkedin.com/in/narendra-meshram-868521245/",
+      email: "narendrameshram976@gmail.com",
+    },
+  };
+  
+  export const skills = [
+    { category: "Frontend", icon: "🎨", color: "#f472b6", items: ["React.js", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"] },
+    { category: "Backend", icon: "⚙️", color: "#60a5fa", items: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "MVC"] },
+    { category: "Database", icon: "🗄️", color: "#34d399", items: ["MongoDB", "Mongoose", "Indexing", "Aggregation"] },
+    { category: "AI / ML", icon: "🧠", color: "#a78bfa", items: ["Python", "Machine Learning", "Data Cleaning", "Automation"] },
+    { category: "DevOps & Tools", icon: "🛠️", color: "#fbbf24", items: ["Git", "GitHub", "OAuth", "Cloud Storage"] },
+    { category: "Languages", icon: "💻", color: "#fb923c", items: ["JavaScript", "Python", "C++", "JSON"] },
+  ];
+  
+  export const projects = [
+    {
+      id: 1,
+      name: "ProjectX — Video Streaming Platform",
+      tagline: "YouTube-like platform with role-based access and JWT security",
+      period: "Oct 2025 – Jan 2026",
+      github: "https://github.com/Reckz69/Project-0",
+      color: "#f472b6",
+      gradient: "linear-gradient(135deg,#f472b6,#a855f7,#6366f1)",
+      icon: "🎬",
+      description: "A production-ready video streaming platform featuring secure JWT authentication, role-based dashboards for Admin, Creator, and User roles, optimized video upload & playback, and watch history tracking.",
+      keyFeatures: [
+        "JWT-based secure authentication with role-based access control",
+        "Admin / Creator / User dashboard separation",
+        "Optimized video upload & streaming pipeline",
+        "Watch history tracking per user",
+        "MongoDB indexing for high-performance queries",
+        "Cloud-based media storage (scalable)",
+      ],
+      techStack: ["MongoDB", "Express.js", "React.js", "Node.js", "Tailwind CSS", "JWT", "REST API", "MVC"],
+      concepts: [
+        { title: "MVC Architecture", desc: "Separation of Model, View, and Controller keeps codebase clean and scalable." },
+        { title: "JWT Authentication", desc: "Stateless, secure token-based auth — no server-side sessions needed." },
+        { title: "Role-Based Access Control", desc: "Different permissions and UI for Admin, Creator, and Viewer roles." },
+        { title: "MongoDB Indexing", desc: "Compound indexes on video metadata ensure sub-millisecond query times." },
+        { title: "RESTful APIs", desc: "Consistent API design following HTTP conventions for every resource." },
+      ],
+    },
+    {
+      id: 2,
+      name: "Gmail Automation",
+      tagline: "AI-powered Gmail → Google Sheets data pipeline",
+      period: "Dec 2025 – Dec 2026",
+      github: "https://github.com/Reckz69/gmail-to-sheets",
+      color: "#34d399",
+      gradient: "linear-gradient(135deg,#34d399,#059669,#0d9488)",
+      icon: "📧",
+      description: "An AI-driven automation system that integrates Gmail and Google Sheets to automatically extract, process, and organize email data into structured spreadsheet entries, streamlining data collection workflow.",
+      keyFeatures: [
+        "OAuth2-based Gmail API authentication",
+        "Automated email parsing and data extraction",
+        "Intelligent data cleaning with Python",
+        "Auto-sync to Google Sheets via Sheets API",
+        "JSON schema mapping for structured output",
+        "Workflow automation reducing manual effort by 90%",
+      ],
+      techStack: ["Python", "Gmail API", "Google Sheets API", "OAuth2", "REST", "JSON", "AI Automation", "Data Cleaning"],
+      concepts: [
+        { title: "OAuth2 Flow", desc: "Secure delegated access to Gmail without exposing user credentials." },
+        { title: "API Integration", desc: "Chaining Gmail + Sheets APIs with proper rate-limit handling." },
+        { title: "Data Extraction & Cleaning", desc: "Regex and NLP techniques to parse unstructured email text." },
+        { title: "AI Automation", desc: "Reducing repetitive tasks using intelligent classification and routing." },
+        { title: "Google Workspace APIs", desc: "Production-grade Google API client usage with token refresh." },
+      ],
+    },
+  ];
+  
+  export const education = [
+    {
+      institution: "Dr. D. Y. Patil Institute of Technology",
+      degree: "B.E. — Artificial Intelligence & Data Science",
+      period: "2023 – 2027",
+      score: "CGPA: 8.0 / 10",
+      icon: "🎓",
+    },
+    {
+      institution: "Shri Samarth Junior College of Engineering, Akola",
+      degree: "12th — MSBSHSE",
+      period: "2022",
+      score: "86.67%",
+      icon: "📚",
+    },
+    {
+      institution: "Jawahar Navodaya Vidyalaya",
+      degree: "10th — CBSE",
+      period: "2020",
+      score: "91%",
+      icon: "🏫",
+    },
+  ];

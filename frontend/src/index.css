@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* your custom styles from HTML */
+@layer utilities {
+  .brush-stroke {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    font-weight: 800;
+    color: #fff; /* Highlights remain crisp white */
+    padding: 0 4px;
+  }
+
+  .brush-stroke::before {
+    content: "";
+    position: absolute;
+    left: -2%;
+    bottom: 15%;
+    width: 104%;
+    height: 35%; /* Thickness of the paint */
+    background: linear-gradient(
+      95deg, 
+      rgba(244, 114, 182, 0.4) 0%, 
+      rgba(168, 85, 247, 0.3) 45%, 
+      rgba(99, 102, 241, 0.2) 100%
+    );
+    z-index: -1;
+    transform: rotate(-1.5deg);
+    border-radius: 50px 15px 50px 15px; /* Organic brush ends */
+    filter: blur(0.8px);
+    pointer-events: none;
+  }
+}
