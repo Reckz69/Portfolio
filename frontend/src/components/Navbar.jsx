@@ -1,6 +1,6 @@
-import React, { useState } from "react"; // Added useState
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence
+import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "./Logo"; 
 
 export default function Navbar() {
@@ -15,15 +15,36 @@ export default function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  const menuVars = {
-    initial: { scaleY: 0 },
-    animate: { scaleY: 1, transition: { duration: 0.5, ease: [0.12, 0, 0.39, 0] } },
-    exit: { scaleY: 0, transition: { delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+  // ── 1. CREATIVE BENTO ANIMATION ──
+  const bentoVars = {
+    initial: { 
+      opacity: 0, 
+      scale: 0.7, 
+      backdropFilter: "blur(0px)" 
+    },
+    animate: { 
+      opacity: 1, 
+      scale: 1, 
+      backdropFilter: "blur(30px)", // Intense glass blur
+      transition: { 
+        duration: 0.4, 
+        ease: [0.34, 1.56, 0.64, 1] // "Pop" elastic ease
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.7, 
+      backdropFilter: "blur(0px)",
+      transition: { 
+        duration: 0.3, 
+        ease: [0.36, 0, 0.66, -0.56] // Reverse "pop"
+      }
+    }
   };
 
-  const mobileLinkVars = {
-    initial: { y: "30vh", transition: { duration: 0.5, ease: [0.37, 0, 0.63, 1] } },
-    open: { y: 0, transition: { duration: 0.7, ease: [0, 0.55, 0.45, 1] } }
+  const linkVars = {
+    initial: { x: 20, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
   };
 
   return (
@@ -74,57 +95,74 @@ export default function Navbar() {
             GitHub <span className="text-[10px]">↗</span>
           </a>
 
-          {/* HAMBURGER BUTTON */}
+          {/* HAMBURGER BUTTON (Increased Z-Index) */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col gap-[5px] md:hidden z-[1001] p-2"
+            className="flex flex-col gap-[5px] md:hidden z-[1100] p-2"
           >
-            <span className={`w-6 h-[2px] bg-white transition-all ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+            <span className={`w-6 h-[2px] bg-white transition-all ${isOpen ? "rotate-45 translate-y-[7px] bg-pink-500" : ""}`} />
             <span className={`w-6 h-[2px] bg-white transition-all ${isOpen ? "opacity-0" : ""}`} />
-            <span className={`w-6 h-[2px] bg-white transition-all ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+            <span className={`w-6 h-[2px] bg-white transition-all ${isOpen ? "-rotate-45 -translate-y-[7px] bg-pink-500" : ""}`} />
           </button>
         </div>
       </motion.nav>
 
-      {/* MOBILE DROPDOWN OVERLAY */}
+      {/* ── 2. NEW CREATIVE "BENTO" DROPDOWN ── */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            variants={menuVars}
+            variants={bentoVars}
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed inset-0 z-[999] bg-[#050510] origin-top flex flex-col p-10 pt-32"
+            // Specific Position: Top-Right, floating below Navbar
+            className="fixed top-20 right-6 z-[1050] w-64 p-6 bg-[#0a0a1c]/90 rounded-3xl border border-white/10 origin-top-right shadow-2xl shadow-pink-500/5"
           >
-            <div className="flex flex-col gap-8 h-full">
-              {navLinks.map((link, index) => (
-                <div key={link.name} className="overflow-hidden">
+            <div className="flex flex-col gap-5">
+              
+              {/* Subtle category label */}
+              <span className="text-[9px] font-fira text-gray-600 uppercase tracking-widest font-bold mb-2">
+                 / Menu System.
+              </span>
+
+              {navLinks.map((link, index) => {
+                const isActive = location.pathname === link.path;
+                return (
                   <motion.div
-                    variants={mobileLinkVars}
-                    initial="initial"
-                    animate="open"
-                    transition={{ delay: 0.1 * index }} // Staggered entry
+                    key={link.name}
+                    variants={linkVars}
+                    transition={{ delay: 0.05 * index, ease: "circOut" }}
                   >
                     <Link
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className="text-5xl font-syne font-black text-white/20 hover:text-white transition-colors duration-500 uppercase tracking-tighter"
+                      className={`font-syne text-xl font-bold uppercase tracking-tighter flex items-center justify-between transition-colors duration-500 ${
+                        isActive ? "text-white" : "text-white/30 hover:text-white"
+                      }`}
                     >
-                      {link.name}
+                      <span>{link.name}</span>
+                      
+                      {/* Active indicator (Pink/Violet Gradient) */}
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#f472b6] to-[#a855f7] shadow-[0_0_8px_#f472b6]" />
+                      )}
                     </Link>
                   </motion.div>
-                </div>
-              ))}
+                );
+              })}
               
-              {/* Mobile Socials Footer */}
-              <div className="mt-auto border-t border-white/5 pt-10 flex justify-between items-center">
-                 <span className="text-[10px] font-fira text-gray-500 tracking-widest uppercase">// Pune, India</span>
-                 <div className="flex gap-4">
-                    <a href="#" className="text-pink-500 font-bold text-xs uppercase tracking-widest">GH</a>
-                    <a href="#" className="text-blue-500 font-bold text-xs uppercase tracking-widest">LI</a>
+              {/* Creative Socials Footer inside the bento */}
+              <div className="mt-4 border-t border-white/5 pt-5 flex justify-between items-center">
+                 <span className="text-[9px] font-mono text-gray-700">Root:Pune.India</span>
+                 <div className="flex gap-3">
+                    <a href="#" className="w-3 h-3 rounded-full bg-white/5 hover:bg-pink-500/20" />
+                    <a href="#" className="w-3 h-3 rounded-full bg-white/5 hover:bg-violet-500/20" />
                  </div>
               </div>
             </div>
+
+            {/* Subtle Gradient Shadow (Matches Hyper-Glass aesthetics) */}
+            <div className="absolute inset-0 rounded-3xl z-[-1] bg-gradient-to-br from-pink-500/10 to-transparent blur-[30px]" />
           </motion.div>
         )}
       </AnimatePresence>
