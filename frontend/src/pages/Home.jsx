@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { profile } from "../data/Portfolio.js";
 import { useClock } from "../hooks/useClock.js";
 import { WidgetPanel } from "../components/WidgetPanel.jsx";
-import { EventReminder } from "../components/eventReminder.jsx";
+import { EventReminder } from "../components/EventReminder.jsx";
 import { SkillOrb } from '../components/SkillOrb.jsx';
 
 export default function Home() {
